@@ -1,0 +1,78 @@
+# Hypothesis Test Notes
+
+## Objective
+
+The objective of this experiment is to determine whether the new onboarding experience (Treatment group) leads to a higher Paid Conversion Rate than the existing onboarding experience (Control group). The results of this test will help determine whether the new onboarding flow should be launched to all users.
+
+---
+
+## Metric Being Tested
+
+**Primary Metric:** Paid Conversion Rate
+
+Paid Conversion Rate is calculated as:
+
+> **Number of users who converted to a paid subscription ÷ Total number of users**
+
+This metric was selected because it is the project's North Star Metric and directly measures the success of the onboarding campaign.
+
+---
+
+## Hypotheses
+
+### Null Hypothesis (H₀)
+
+There is **no statistically significant difference** in the Paid Conversion Rate between the Control group and the Treatment group.
+
+[
+H_0: p_{Treatment} = p_{Control}
+]
+
+---
+
+### Alternative Hypothesis (H₁)
+
+The Treatment group has a **higher Paid Conversion Rate** than the Control group.
+
+[
+H_1: p_{Treatment} > p_{Control}
+]
+
+---
+
+## Type of Test
+
+A **one-tailed hypothesis test** is used because the business objective is specifically to determine whether the new onboarding experience improves the Paid Conversion Rate. The company is interested in an increase in performance rather than any difference in either direction.
+
+---
+
+## Significance Level
+
+The significance level for this analysis is:
+
+**α = 0.05 (5%)**
+
+This means that results will be considered statistically significant if the probability of observing the difference by chance is less than 5%.
+
+---
+
+## Reason for Choosing This Metric
+
+Paid Conversion Rate was selected because it directly measures whether users complete the primary business objective of becoming paying customers. Improvements in this metric have a direct impact on subscription growth and business revenue, making it the most appropriate measure for evaluating the effectiveness of the new onboarding campaign.
+
+Supporting metrics such as Engagement Score, Trial Start Rate, and Onboarding Completion Rate provide additional context but do not directly represent business success.
+
+---
+
+## Decision Rule
+
+* If **p-value < 0.05**, reject the Null Hypothesis and conclude that the Treatment group significantly improves the Paid Conversion Rate.
+* If **p-value ≥ 0.05**, fail to reject the Null Hypothesis and conclude that there is insufficient evidence to support launching the new onboarding experience.
+
+---
+
+## Business Interpretation
+
+The statistical test provides objective evidence about whether the observed difference in Paid Conversion Rate is likely due to the new onboarding campaign rather than random variation.
+
+The final business recommendation will not be based solely on statistical significance. Guardrail metrics such as Refund Rate, Support Ticket Rate, Average Engagement Score, Average Days to Convert, and Average Revenue Per User will also be reviewed before deciding whether to launch the new onboarding experience for all users.
