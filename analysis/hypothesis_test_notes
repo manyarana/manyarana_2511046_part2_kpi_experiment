@@ -76,3 +76,33 @@ Supporting metrics such as Engagement Score, Trial Start Rate, and Onboarding Co
 The statistical test provides objective evidence about whether the observed difference in Paid Conversion Rate is likely due to the new onboarding campaign rather than random variation.
 
 The final business recommendation will not be based solely on statistical significance. Guardrail metrics such as Refund Rate, Support Ticket Rate, Average Engagement Score, Average Days to Convert, and Average Revenue Per User will also be reviewed before deciding whether to launch the new onboarding experience for all users.
+---
+## Hypothesis Test Results
+
+A one-tailed two-proportion z-test was performed to compare the Paid Conversion Rate between the Control and Treatment groups.
+
+### Test Inputs
+
+| Metric               | Control | Treatment |
+| -------------------- | ------: | --------: |
+| Total Users          |     693 |       715 |
+| Converted Users      |      22 |        50 |
+| Paid Conversion Rate |   3.17% |     6.99% |
+
+### Test Output
+
+* **Test Type:** Two-Proportion Z-Test (One-Tailed)
+* **Significance Level (α):** 0.05
+* **Standard Error:** 0.011742174
+* **Z-Score:** 3.251871262
+* **P-Value:** 0.0005732396869
+
+### Decision
+
+Since the p-value (0.000573) is significantly lower than the chosen significance level of 0.05, the Null Hypothesis is rejected.
+
+### Business Interpretation
+
+The hypothesis test provides strong statistical evidence that the new onboarding experience resulted in a higher Paid Conversion Rate than the existing onboarding process. The Treatment group achieved a conversion rate of **6.99%**, compared with **3.17%** for the Control group, and the observed improvement is unlikely to be due to random chance.
+
+Based on the primary success metric alone, the Treatment group performed significantly better. However, before recommending a full rollout, additional guardrail metrics such as Refund Rate, Support Ticket Rate, Average Engagement Score, Average Days to Convert, and Revenue Per User should also be evaluated to ensure the improvement does not introduce unintended business risks.
