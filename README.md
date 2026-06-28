@@ -1,68 +1,94 @@
-## Business Problem
+# KPI Framework, Business Experiment Analysis & Decision Recommendation
 
-The company recently introduced a new onboarding and activation campaign for new users of its subscription-based digital product. Users were randomly assigned to either the existing onboarding experience (Control group) or the new onboarding experience (Treatment group).
+## Business Context
 
-The main business decision is whether the new onboarding experience should be launched to all users or whether additional testing is required.
+This project analyzes an A/B experiment conducted by a subscription-based digital product company. The company introduced a new onboarding experience with the goal of improving user activation and increasing the number of users who convert to paid subscriptions.
 
-This decision directly impacts business leadership, the product team, the marketing team, and future users of the platform. A successful onboarding experience should improve user activation, increase paid conversions, and generate higher long-term revenue while maintaining a positive user experience.
+Users were randomly assigned to one of two groups:
 
-Although improving conversion is the primary objective, the company must also monitor important guardrail metrics such as refund rate, support ticket rate, engagement score, and the average time taken to convert. An increase in conversions is not beneficial if it also leads to more customer complaints, lower engagement, or poor user retention.
+* **Control Group:** Existing onboarding experience
+* **Treatment Group:** New onboarding experience
 
-Before recommending a full rollout, the experiment results must demonstrate a meaningful improvement in the primary success metric while ensuring that the guardrail metrics remain stable or improve.
+The objective of this project is to determine whether the new onboarding experience performs better than the existing one while ensuring that it does not negatively affect other important business metrics.
+
 ---
-## North Star Metric
 
-### Selected North Star Metric
+# Dataset Description
 
-**Paid Conversion Rate**
+The dataset contains user-level experiment data for **1,408 users** and includes information such as:
 
-The Paid Conversion Rate has been selected as the North Star Metric because it directly measures how effectively the new onboarding experience converts users into paying customers. Since the primary objective of the experiment is to improve user activation and increase subscriptions, this metric best reflects the overall success of the campaign.
+* User ID
+* Signup Date
+* Experiment Group
+* Region
+* Device Type
+* Traffic Source
+* Plan Type
+* Landing Page Visit
+* Trial Start
+* Onboarding Completion
+* Paid Conversion
+* Revenue (30 Days)
+* Support Tickets
+* Refund Requests
+* Days to Convert
+* Engagement Score
 
-### Why This Is the Main Success Metric
+The dataset was used to compare the performance of the Control and Treatment groups across several business and product metrics.
 
-An increase in paid conversions has a direct impact on business revenue and customer growth. Unlike engagement metrics, which only indicate user activity, paid conversions demonstrate that users found enough value in the product to purchase a subscription. This makes it the most meaningful measure for evaluating the effectiveness of the new onboarding experience.
-
-### Supporting Metrics
-
-While Paid Conversion Rate is the primary success metric, several supporting metrics provide additional context:
-
-* **Landing Page Visit Rate** indicates whether users reached the onboarding experience.
-* **Trial Start Rate** measures initial user interest.
-* **Onboarding Completion Rate** shows how many users successfully completed the onboarding process.
-* **Average Revenue Per User (ARPU)** evaluates the financial impact of the campaign.
-* **Engagement Score** measures how actively users interact with the product after onboarding.
-
-These metrics help explain *why* the Paid Conversion Rate increased or decreased but do not directly represent business success.
-
-### Connection to Business Growth
-
-A higher Paid Conversion Rate increases the number of paying customers, leading to higher subscription revenue, improved customer acquisition efficiency, and stronger long-term business growth. Improving this metric also increases the return on investment for marketing and product development efforts.
-
-### Risk of Optimizing Only This Metric
-
-Focusing only on Paid Conversion Rate could lead to poor business decisions. For example, a campaign might increase conversions by using aggressive promotions or misleading messaging, but this could also increase refund requests, customer complaints, or reduce long-term engagement. For this reason, Paid Conversion Rate should always be evaluated alongside guardrail metrics such as Refund Rate, Support Ticket Rate, Engagement Score, and Days to Convert.
 ---
-## KPI Tree Summary
 
-The KPI Tree was created to show how the selected North Star Metric, **Paid Conversion Rate**, is influenced by different stages of the customer journey.
+# Business Problem
 
-Three primary drivers were identified:
+The company must decide whether the new onboarding campaign should replace the existing onboarding experience.
 
-- User Acquisition
-- User Activation
-- User Engagement
+The decision should not be based only on whether more users convert to paid subscriptions. It should also consider whether the new onboarding experience introduces any negative effects, such as increased customer support requests, higher refund rates, or lower revenue quality.
 
-Each driver contains supporting KPIs that help explain changes in the North Star Metric. In addition, guardrail metrics such as Refund Rate, Support Ticket Rate, and Average revenue per user were included to ensure that improvements in conversions do not negatively affect customer satisfaction or business performance.
-
-This structure provides a balanced framework for evaluating the success of the onboarding experiment and supports data-driven decision-making.
 ---
-## Experiment Data Preparation
 
-Before analysing the experiment results, the dataset was reviewed to ensure it was suitable for comparison between the Control and Treatment groups. Several data quality checks were performed before any calculations or summaries were created.
+# North Star Metric
+
+The North Star Metric selected for this experiment is **Paid Conversion Rate**.
+
+**Paid Conversion Rate = Number of Paid Users ÷ Total Users**
+
+This metric was chosen because it directly measures the primary business objective of increasing subscription growth. While other metrics provide useful insights into user behaviour, Paid Conversion Rate has the greatest impact on long-term business revenue and customer acquisition.
+
+---
+
+# KPI Tree Summary
+
+The KPI Tree was designed around the Paid Conversion Rate.
+
+### Primary KPI Drivers
+
+* Landing Page Visit Rate
+* Trial Start Rate
+* Onboarding Completion Rate
+
+### Supporting Business Metrics
+
+* Average Revenue Per User
+* Average Engagement Score
+* Average Days to Convert
+
+### Guardrail Metrics
+
+* Refund Rate
+* Support Ticket Rate
+* Average Revenue Per Converted User
+
+These guardrail metrics ensure that improvements in conversions are not achieved at the cost of customer experience or business quality.
+
+---
+
+# Experiment Data Preparation
+
+Before beginning the analysis, several data quality checks were performed.
 
 ### Missing Values
 
-The dataset was checked for missing values across all columns. The following missing values were identified:
+The following missing values were identified:
 
 | Column           | Missing Values |
 | ---------------- | -------------: |
@@ -71,73 +97,170 @@ The dataset was checked for missing values across all columns. The following mis
 | Refund Requested |           1336 |
 | Days to Convert  |             14 |
 
-The missing values were documented for analysis. No values were modified unless required by the assignment, ensuring the original experiment data remained unchanged.
+### Experiment Groups
 
-### Experiment Group Distribution
+| Group     | Users |
+| --------- | ----: |
+| Control   |   693 |
+| Treatment |   715 |
 
-The number of users assigned to each experiment group was verified to confirm that both groups were reasonably balanced.
-
-| Experiment Group | User Count |
-| ---------------- | ---------: |
-| Control          |        693 |
-| Treatment        |        715 |
-| **Total**        |   **1408** |
-
-The small difference in group size is acceptable and allows for a fair comparison of experiment outcomes.
+The groups were reasonably balanced and suitable for comparison.
 
 ### Duplicate User IDs
 
-The dataset was checked for duplicate User IDs.
+* Duplicate User IDs: **8**
+* Duplicate Records: **16**
 
-* Duplicate User IDs identified: **8**
-* Total duplicate records involved: **16**
-
-These records were retained and documented because the assignment required duplicate User IDs to be identified rather than removed automatically.
+These records were documented and retained for review instead of being removed automatically.
 
 ### Binary Value Validation
 
-The following binary columns were validated:
-
-* Visited Landing Page
-* Started Trial
-* Completed Onboarding
-* Converted to Paid
-* Refund Requested
-
-All binary fields contained valid values (0 or 1), and no invalid entries were found.
+All binary fields contained valid values (0 or 1). No invalid binary values were found.
 
 ### Revenue Outlier Check
 
-The **Revenue (30 Days)** column was analysed using the Interquartile Range (IQR) method to detect unusually high or low values.
-
-No revenue outliers were identified, indicating that the revenue values fall within the expected range for this experiment.
+Revenue values were checked using the Interquartile Range (IQR) method. No revenue outliers were identified.
 
 ### Segment Distribution
 
-To ensure that the experiment groups were comparable, the distribution of users across key segments was reviewed using Pivot Tables.
+The distribution of users across Region, Device Type, and Traffic Source was reviewed using Pivot Tables. The Control and Treatment groups were reasonably balanced across these segments, allowing for a fair comparison during the experiment analysis.
 
-**Region Distribution**
+---
 
-* East: 158 Control, 172 Treatment
-* North: 203 Control, 180 Treatment
-* South: 184 Control, 184 Treatment
-* West: 148 Control, 179 Treatment
+# Experiment Analysis Approach
 
-The regional distribution is reasonably balanced, with only minor differences between the two groups.
+The experiment was evaluated by comparing the Control and Treatment groups across key performance metrics.
 
-**Device Type Distribution**
+The following metrics were calculated:
 
-* Desktop: 200 Control, 214 Treatment
-* Mobile: 428 Control, 436 Treatment
-* Tablet: 56 Control, 56 Treatment
-* A small number of records contained missing device information (9 users in each group).
+* User Count
+* Landing Page Visit Rate
+* Trial Start Rate
+* Onboarding Completion Rate
+* Paid Conversion Rate
+* Average Revenue Per User
+* Average Revenue Per Converted User
+* Refund Rate
+* Support Ticket Rate
+* Average Engagement Score
+* Average Days to Convert
 
-The device distribution is consistent across both experiment groups.
+Additional segment-level analysis was performed using Pivot Tables for:
 
-**Traffic Source Distribution**
+* Region
+* Device Type
+* Traffic Source
 
-The majority of users came from Organic Search, followed by Paid Search, Social, Referral, and Email. A small number of records contained missing traffic source information (6 in the Control group and 18 in the Treatment group). Overall, the traffic source distribution is sufficiently balanced to support a fair comparison between the Control and Treatment groups.
+---
 
-### Conclusion
+# Hypothesis Test Summary
 
-The dataset was successfully prepared for analysis. Although a small number of missing values and duplicate User IDs were identified, the Control and Treatment groups remain well balanced across the major user segments. No invalid binary values or revenue outliers were found, making the dataset suitable for the experiment analysis and hypothesis testing performed in the following tasks.
+A one-tailed two-proportion Z-test was performed to determine whether the Treatment group achieved a statistically significant improvement in Paid Conversion Rate.
+
+### Test Results
+
+| Metric             | Value           |
+| ------------------ | --------------- |
+| Standard Error     | 0.011742174     |
+| Z-Score            | 3.251871262     |
+| P-Value            | 0.0005732396869 |
+| Significance Level | 0.05            |
+
+Since the p-value is significantly lower than 0.05, the Null Hypothesis was rejected.
+
+This provides strong statistical evidence that the new onboarding experience improved the Paid Conversion Rate compared with the existing onboarding process.
+
+---
+
+# Guardrail Metrics Considered
+
+Although the Treatment group showed a significant improvement in Paid Conversion Rate, additional business metrics were evaluated before making a recommendation.
+
+### Positive Outcomes
+
+* Landing Page Visit Rate increased from **63.64%** to **72.59%**.
+* Trial Start Rate increased from **25.11%** to **29.09%**.
+* Onboarding Completion Rate increased from **15.58%** to **21.26%**.
+* Paid Conversion Rate improved from **3.17%** to **6.99%**.
+* Average Engagement Score increased from **57.03** to **62.93**.
+* Average Days to Convert decreased from **8.86 days** to **6.40 days**.
+* Average Revenue Per User increased slightly from **51.75** to **53.88**.
+
+### Risks Identified
+
+* Support Ticket Rate increased from **14.72%** to **24.76%**.
+* Refund Rate increased slightly from **0.00%** to **0.42%**.
+* Average Revenue Per Converted User decreased from **1630.10** to **770.41**.
+
+These findings indicate that while the new onboarding experience improved conversions and engagement, it also introduced some operational risks that should be monitored.
+
+---
+
+# Final Recommendation
+
+Based on the experiment results and guardrail analysis, the recommended decision is:
+
+## **Launch only for selected segments**
+
+The Treatment group delivered a statistically significant improvement in Paid Conversion Rate and showed positive improvements in engagement, onboarding completion, and overall revenue per user.
+
+However, the increase in customer support requests and the decline in Average Revenue Per Converted User suggest that a full rollout should be approached cautiously. A phased rollout will allow the company to continue monitoring these guardrail metrics while benefiting from the improved conversion performance.
+
+---
+
+# Assumptions and Limitations
+
+### Assumptions
+
+* The experiment groups were randomly assigned.
+* All recorded user events accurately represent user behaviour.
+* Revenue values reflect the first 30 days after signup.
+* The experiment period is representative of normal user activity.
+
+### Limitations
+
+* Some missing values were present in the Region, Device Type, Refund Requested, and Days to Convert columns.
+* Duplicate User IDs were identified but retained for review.
+* The analysis is based on a single experimental dataset and does not measure long-term customer retention or lifetime value.
+* External business factors that may influence user behaviour were not included in the dataset.
+
+---
+
+# Repository Structure
+
+```text
+part2_kpi_experiment/
+├── data/
+│   └── campaign_experiment_data.xlsx
+├── analysis/
+│   ├── experiment_analysis.xlsx
+│   └── hypothesis_test_notes.md
+├── outputs/
+│   ├── experiment_summary.xlsx
+│   ├── kpi_tree.png
+│   └── recommendation_memo.md
+├── screenshots/
+│   ├── summary_metrics.png
+│   ├── hypothesis_test_output.png
+│   └── kpi_tree_preview.png
+└── README.md
+```
+
+---
+
+# Screenshots Included
+
+The repository contains the following screenshots as required:
+
+* **summary_metrics.png** – Overall comparison of the Control and Treatment groups.
+* **hypothesis_test_output.png** – Evidence of the hypothesis test calculations and results.
+* **kpi_tree_preview.png** – Preview of the KPI Tree used in the analysis.
+
+---
+
+# Conclusion
+
+The analysis demonstrates that the new onboarding experience has a positive impact on user conversion and engagement. Statistical testing confirms that the improvement in Paid Conversion Rate is significant, making the Treatment onboarding experience a promising alternative to the existing process.
+
+At the same time, the increase in Support Ticket Rate and the reduction in Average Revenue Per Converted User highlight the importance of monitoring customer experience and revenue quality during deployment. A phased rollout with continued monitoring is therefore the most balanced and data-driven recommendation.
+
