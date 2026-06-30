@@ -252,9 +252,9 @@ part2_kpi_experiment/
 
 The repository contains the following screenshots as required:
 
-* **summary_metrics.png** – Overall comparison of the Control and Treatment groups.
-* **hypothesis_test_output.png** – Evidence of the hypothesis test calculations and results.
-* **kpi_tree_preview.png** – Preview of the KPI Tree used in the analysis.
+* **summary_metrics.png** – Overall comparison of the Control and Treatment groups.(https://github.com/manyarana/manyarana_2511046_part2_kpi_experiment/blob/main/screenshots/summary_metrics.png)
+* **hypothesis_test_output.png** – Evidence of the hypothesis test calculations and results.(https://github.com/manyarana/manyarana_2511046_part2_kpi_experiment/blob/main/screenshots/hypothesis_test_output.png)
+* **kpi_tree_preview.png** – Preview of the KPI Tree used in the analysis.(https://github.com/manyarana/manyarana_2511046_part2_kpi_experiment/blob/main/screenshots/kpi_tree_preview.png)
 
 ---
 
